@@ -26,7 +26,7 @@ var guesses = [];
 
     if (psychic == mewtwoGuess) {
       winner++;
-      alert( "How can this be?" );
+      alert( "You've.....beat me?" );
       //resetting chances back to 9
       chances = 9; 
       //resets the guesses array

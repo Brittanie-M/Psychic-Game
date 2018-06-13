@@ -1,9 +1,6 @@
 body {
-    background: url("assets/images/pow.png") repeat;
+    background: url("../images/pow.png") repeat;
 
 }
 
-#mewtwo {
-    float: right;
-}
 
