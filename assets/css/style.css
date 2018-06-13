@@ -1,4 +1,11 @@
-div.mewtwo {
-    float: right;
-
+body {
+    background-image: url("images/pow-star.png");
+    background-repeat: repeat;
 }
+
+#mewtwo {
+    float: right;
+    background: transparent;
+}
+
+

@@ -1,3 +1,5 @@
+//Prefacing this by saying that I had a little fun with the variable names :)
+
 //Computer's choices
 var confusion = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
@@ -6,46 +8,49 @@ var winner = 0;
 var loser = 0;
 var chances = 9;
 var guesses = []; 
-var choices = 0;
 
-document.onkeyup = function(event) {
 
-  // Alakazam (user)'s guess
-    var alakazam = String.fromCharCode(event.keyCode);
+  /* Logic to determine wins, losses, 
+  and display # of guesses and letters guessed */
 
-  // Mewtwo's guess :)
+  document.onkeyup = function(event) {
+
+    // user's guess
+    var psychic = String.fromCharCode(event.keyCode).toLowerCase();
+
+    // Mewtwo's guess :)
     var mewtwoGuess = confusion[Math.floor(Math.random() * confusion.length)]; 
 
-  // Logic to determine wins, losses, and display # of guesses and letters guessed
-  var alakazam = String.fromCharCode(event.keyCode).toLowerCase(); //taking in user guess
+    //pushing user guess to var guesses
+    guesses.push(psychic); 
 
-        var mewtwoGuess = confusion[Math.floor(Math.random()*confusion.length)]; //computer selects random letter
-        guesses.push(alakazam); //pushing user guess to guesses so far
-        
-        if (alakazam == mewtwoGuess) {
-            wins++;
-            alert('Way to go! You\'ve guesesed corrrectly. You Won!');
-            chances = 9; //reseting the guesses back to 9 so that the user can play again
-            guesses.length = 0; //this removes everything from the guesses so far array, so that the guesses from the previous round don't show
-        }
-        else if (chances == 0){
-            losses++;
-            alert('You didn\'t guess the correct letter. You lost. Let\'s try again.');
-            chances = 9;
-            guesses.length = 0;
-        }
-        else if (alakazam !== mewtwoGuess){
-            chances--; //decrementing the guesses left
-        }  
+    if (psychic == mewtwoGuess) {
+      winner++;
+      alert( "How can this be?" );
+      //resetting chances back to 9
+      chances = 9; 
+      //resets the guesses array
+      guesses.length = 0; 
+}
+    else if (chances == 0){
+      loser++;
+      alert( "You will never defeat me!" );
+      chances = 9;
+      guesses.length = 0;
+}
+    else if (psychic !== mewtwoGuess){
+      chances--; //decreases var chances
+}  
+// Variable to link to the HTML
+var html = 
+"<h1> The Psychic Game: Can You Beat Mewtwo? </h1>" +
+"<h2> The game begins when you guess a letter foolish human.. </h2>" +
+"<p> Wins: " + winner + "</p>" +
+"<p> Losses: " + loser + "</p>" +
+"<p> Guesses Left: " + chances + "</p>" +
+"<p> Your Guesses so far: " + guesses + "</p>";
 
-    // Variable to link to the HTML
-    var html =
-      "<p>You chose: " + alakazam + "</p>" +
-      "<p>The computer chose: " + confusion + "</p>" +
-      "<p>winner: " + winner + "</p>" +
-      "<p>loser: " + loser + "</p>" +
-      "<p>ties: " + ties + "</p>";
+// Placing the html into the game ID
+document.querySelector('#game').innerHTML = html;
 
-    // Set the inner HTML contents of the #game div to our html string
-    document.querySelector("#game").innerHTML = html;
-  };
+  } 
