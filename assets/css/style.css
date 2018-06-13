@@ -1,10 +1,9 @@
 body {
-    background-image: url("images/pow-star.png");
-    background-repeat: repeat;
+    background: url("assets/images/pow.png") repeat;
+
 }
 
 #mewtwo {
     float: right;
-    background: transparent;
 }
 
